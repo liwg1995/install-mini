@@ -1,0 +1,4 @@
+MINIO_ACCESS_KEY=""
+MINIO_SECRET_KEY=""
+MINIO_VOLUMES=http://host{1...4}/data{1...4}
+MINIO_OPTS="--address :9000"

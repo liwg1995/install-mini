@@ -15,7 +15,7 @@ echo "check os passed"
 
 # install fabric3
 echo "******* Check python3 ******"
-whitch python3 >/dev/null 2>&1
+which python3 >/dev/null 2>&1
 
 if [ $? != 0 ]; then
   echo "Only running in python3 env!Now install python3"
@@ -58,7 +58,7 @@ fi
 ping -c 1 www.baidu.com 1>/dev/null 2>&1
 if [ $? == 0 ]; then
   echo "Operating system networking detected! Install fabric3 from networking"
-  whitch pip3 >/dev/null 2>&1
+  which pip3 >/dev/null 2>&1
   if [ $? != 0 ]; then
     yum install python3-pip -y
   fi
@@ -76,15 +76,14 @@ else
     echo "Install fabric3 failed! Please check your os env."
     exit 1
   fi
-  whitch fab >/dev/null 2>&1
-  if [ $? != 0 ]; then
-    if [ -f '/usr/local/python3/bin/fab' ]; then
-      ln -s /usr/local/python3/bin/fab /usr/local/bin/fab
-    fi
-  fi
-  echo "Install fabric3 successful! "
 fi
-
+which fab >/dev/null 2>&1
+if [ $? != 0 ]; then
+  if [ -f '/usr/local/python3/bin/fab' ]; then
+     ln -s /usr/local/python3/bin/fab /usr/local/bin/fab
+  fi
+fi
+echo "Install fabric3 successful! "
 
 echo "Install minio..."
 fab -f ./deploy_minio/deploy_minio.py go

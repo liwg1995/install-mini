@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # check os is or not linux
 echo "******* Check os *******"
-os_name=$(uanme)
+os_name=$(uname)
 if [ $os_name != 'Linux' ]; then
   echo "os is not Linux!"
   exit 1
@@ -51,7 +51,7 @@ if [ $? != 0 ]; then
   fi
   ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
   ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
-  python_version=$(python3 version)
+  python_version=$(python3 --version)
   echo "Install python3 and pip3 successful! Then version is: $python_version"
 fi
 

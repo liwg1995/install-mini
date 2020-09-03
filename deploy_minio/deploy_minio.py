@@ -7,7 +7,7 @@
 # @Software: PyCharm
 
 from fabric.colors import *
-from deploy_minio.settings import *
+from settings import *
 from fabric.context_managers import *
 import platform
 

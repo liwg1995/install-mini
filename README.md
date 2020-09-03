@@ -11,7 +11,7 @@
 ### 安装
 - 本脚本所在节点，执行
 ```
-bash install.sh
+bash install_minio.sh
 ```
 
 ### TODO

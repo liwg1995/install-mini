@@ -70,12 +70,12 @@ def set_hosts():
 @roles('distribute_servers')
 def set_systemcd_file():
     print(yellow('Add MinIO systemd file to /usr/lib/systemd/system/minio.service'))
-    with lcd('../minio-server/etc/'):
+    with lcd('../minio-server/'):
         put('minio.service', minio_systemd_conf_source + 'minio.service')
     run('systemctl daemon-reload')
     run('systemctl enable minio')
     res = run('systemctl start minio')
-    if res.faild:
+    if res.failed:
         abort("Start minio service abort")
     else:
         print(green('Start minio service successful'))
@@ -95,17 +95,17 @@ def install_nginx():
     print(yellow('Install nginx service'))
     with lcd('../nginx-lvs/'):
         put('nginx-1.18.0-1.el7.ngx.x86_64.rpm', '/root/nginx-1.18.0-1.el7.ngx.x86_64.rpm')
-    run('yum localinstall /root/nginx-1.18.0-1.el7.ngx.x86_64.rpm')
+    run('yum localinstall -y /root/nginx-1.18.0-1.el7.ngx.x86_64.rpm')
     run('systemctl enable nginx')
     res = run('systemctl start nginx')
-    if res.faild:
-        abort('Nginx service faild')
+    if res.failed:
+        abort('Nginx service failed')
     else:
         print(green('Nginx service successful'))
         with lcd('../nginx-lvs'):
             put('minio.conf', minio_nginx_lvs_file_source + 'minio.conf')
         result = run('systemctl reload nginx')
-        if result.faild:
+        if result.failed:
             abort('Minio service failed')
         else:
             print(green('Nginx service start successful'))

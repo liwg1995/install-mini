@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-
-
 # check os is or not linux
 echo "******* Check os *******"
 os_name=$(uanme)
@@ -33,7 +31,7 @@ if [ $? != 0 ]; then
       mkdir /usr/local/python3
   fi
 
-  tar -zxvf ./lib/python3/Python-3.7.2.tar -C /tmp && cd /tmp/Python-3.7.2/ || exit 1
+  tar -zxvf ./lib/python3/Python-3.7.2.tgz -C /tmp && cd /tmp/Python-3.7.2/ || exit 1
   echo "*** Install Python3 ***"
   ./configure --prefix=/usr/local/python3 --enable-optimizations --with-ssl
   if [ $? != 0 ]; then

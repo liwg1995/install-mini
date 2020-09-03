@@ -44,7 +44,7 @@ if [ $? != 0 ]; then
     echo "make failed! Please check your os env"
     exit 1
   fi
-  make insatll
+  make install
   if [ $? != 0 ]; then
     echo "make install failed! Please check your os env"
     exit 1

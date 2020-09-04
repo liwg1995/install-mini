@@ -22,4 +22,4 @@ bash install_minio.sh
 - [ ] 适配`arm`飞腾架构下的安装 for `银河麒麟 4.0.2 server`
 
 ### TIPS
-- `shell`脚本还未测试，`python`脚本已经做了测试
+- 本分支做华为鲲鹏上的适配安装 

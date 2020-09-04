@@ -39,7 +39,7 @@ if [ $? != 0 ]; then
 
   tar -zxvf ./lib/python3/Python-3.7.2.tgz -C /tmp && cd /tmp/Python-3.7.2/ || exit 1
   echo "*** Install Python3 ***"
-  ./configure --prefix=/usr/local/python3 --enable-optimizations --with-ssl
+  ./configure --prefix=/usr/local/python3  --with-ssl
   if [ $? != 0 ]; then
     echo "configure failed! Please check your os env"
     exit 1
@@ -73,6 +73,7 @@ if [ $? == 0 ]; then
 else
   echo "The operating system is not networked! Install fabric3 from local"
   python3_ver=$(python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $1$2}')
+  # 这部分还有写BUG
   if [ $python3_ver == '36' ]; then
     pip3 install ./python-packages/kunpeng/python3.6/*.whl
   elif [ $python3_ver == '37' ]; then

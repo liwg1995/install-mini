@@ -11,6 +11,12 @@ if [ ! -f "/etc/redhat-release" ]; then
   exit 1
 fi
 
+kunpeng=$(uname -a | awk -F ' ' '{print $2}')
+if [ $kunpeng != 'kunpeng' ]; then
+    echo "cpu is not kunpeng!This script just support huawei kunpeng"
+    exit 1
+fi
+
 echo "check os passed"
 
 # install fabric3
@@ -68,9 +74,9 @@ else
   echo "The operating system is not networked! Install fabric3 from local"
   python3_ver=$(python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $1$2}')
   if [ $python3_ver == '36' ]; then
-    pip3 install ./python-packages/python3.6/*.whl
+    pip3 install ./python-packages/kunpeng/python3.6/*.whl
   elif [ $python3_ver == '37' ]; then
-    pip3 install ./python-packages/python3.7/*.whl
+    pip3 install ./python-packages/kunpeng/python3.7/*.whl
   fi
 
   if [ $? != 0 ]; then

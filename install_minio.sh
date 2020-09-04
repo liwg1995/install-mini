@@ -73,7 +73,7 @@ if [ $? == 0 ]; then
 else
   echo "The operating system is not networked! Install fabric3 from local"
   python3_ver=$(python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $1$2}')
-  # 这部分还有写BUG
+  # 这部分，离线安装还有些BUG
   if [ $python3_ver == '36' ]; then
     pip3 install ./python-packages/kunpeng/python3.6/*.whl
   elif [ $python3_ver == '37' ]; then

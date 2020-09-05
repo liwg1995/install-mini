@@ -21,8 +21,8 @@ def warning():
         abort(red("Only support Linux"))
     else:
         print(green("system is: "+ system_name))
-    if machine != "x86_64":
-        abort(red("Only support x86"))
+    if machine != "arrch64":
+        abort(red("Only support huawei kunpeng arrch64"))
     else:
         print(green("framework is: " + machine))
     if os_name != "CentOS Linux":

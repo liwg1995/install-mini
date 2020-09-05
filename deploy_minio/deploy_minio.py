@@ -43,7 +43,7 @@ def off_firewalld():
 @roles('distribute_servers')
 def deoloy_minio():
     print(yellow("Add MinIO binary file to /usr/local/bin/minio"))
-    with lcd('../minio-server/'):
+    with lcd('../minio-server/arm64/'):
         put('minio', minio_binary_file_source + 'minio')
     run('chmod +x /usr/local/bin/minio')
     print(green('Add successful'))
@@ -84,7 +84,7 @@ def set_systemcd_file():
 @roles('client_servers')
 def deploy_minio_client():
     print(yellow('Add minio client binary to /usr/local/bin/mc'))
-    with lcd('../minio-client/'):
+    with lcd('../minio-client/arm64/'):
         put('mc', minio_binary_file_source + 'mc')
     run('chmod +x /usr/local/bin/mc')
     print(green('Add minio client successful'))

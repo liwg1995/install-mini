@@ -18,7 +18,7 @@ bash install_minio.sh
 ### TODO
 - [ ] 引入`jinja2`，渲染配置文件
 - [ ] 适配`Ubuntu`下的安装
-- [ ] 适配`arm`鲲鹏架构下的安装 for `Centos 7.x`
+- [x] 适配`arm`鲲鹏架构下的安装 for `Centos 7.x`
 - [ ] 适配`arm`飞腾架构下的安装 for `银河麒麟 4.0.2 server`
 
 ### TIPS

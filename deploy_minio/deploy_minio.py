@@ -94,8 +94,8 @@ def deploy_minio_client():
 def install_nginx():
     print(yellow('Install nginx service'))
     with lcd('../nginx-lvs/'):
-        put('nginx-1.18.0-1.el7.ngx.x86_64.rpm', '/root/nginx-1.18.0-1.el7.ngx.x86_64.rpm')
-    run('yum localinstall -y /root/nginx-1.18.0-1.el7.ngx.x86_64.rpm')
+        put('arm64-kunpeng', '/tmp/arm64-kunpeng')
+    run('yum localinstall -y /tmp/arm64-kunpeng/*.rpm')
     run('systemctl enable nginx')
     res = run('systemctl start nginx')
     if res.failed:

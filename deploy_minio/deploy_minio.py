@@ -95,7 +95,9 @@ def install_nginx():
     print(yellow('Install nginx service'))
     with lcd('../nginx-lvs/'):
         put('arm64-kunpeng', '/tmp/arm64-kunpeng')
-    run('yum localinstall -y /tmp/arm64-kunpeng/*.rpm')
+    install_res = run('yum localinstall -y /tmp/arm64-kunpeng/*.rpm')
+    if install_res.failed:
+        abort("Install Nginx Failed!")
     run('systemctl enable nginx')
     res = run('systemctl start nginx')
     if res.failed:
@@ -106,7 +108,7 @@ def install_nginx():
             put('minio.conf', minio_nginx_lvs_file_source + 'minio.conf')
         result = run('systemctl reload nginx')
         if result.failed:
-            abort('Minio service failed')
+            abort('Nginx service for Minio failed')
         else:
             print(green('Nginx service start successful'))
 

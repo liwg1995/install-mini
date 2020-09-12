@@ -27,7 +27,7 @@ if [ $? != 0 ]; then
   echo "Only running in python3 env!Now install python3"
   echo -n "\n"
   echo "Install python3 lib..."
-  yum localinstall ./lib/python3-os-lib/*.rpm -y
+  yum localinstall ./lib/python3-os-lib/kunpeng/*.rpm -y
   if [ $? != 0 ]; then
     echo "python3 os lib install failed!"
     exit 1

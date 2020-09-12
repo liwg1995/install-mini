@@ -94,7 +94,7 @@ def deploy_minio_client():
 def install_nginx():
     print(yellow('Install nginx service'))
     with lcd('../nginx-lvs/'):
-        put('arm64-kunpeng', '/tmp/arm64-kunpeng')
+        put('arm64-kunpeng', '/tmp/')
     install_res = run('yum localinstall -y /tmp/arm64-kunpeng/*.rpm')
     if install_res.failed:
         abort("Install Nginx Failed!")

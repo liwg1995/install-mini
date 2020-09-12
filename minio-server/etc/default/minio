@@ -1,4 +1,5 @@
 MINIO_ACCESS_KEY=""
 MINIO_SECRET_KEY=""
+# 单节点仅需写：MINIO_VOLUMES=host1/data1
 MINIO_VOLUMES=http://host{1...4}/data{1...4}
 MINIO_OPTS="--address :9000"

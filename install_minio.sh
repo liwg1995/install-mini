@@ -75,9 +75,9 @@ else
   python3_ver=$(python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $1$2}')
   # 这部分，离线安装还有些BUG
   if [ $python3_ver == '36' ]; then
-    pip3 install ./python-packages/kunpeng/python3.6/*.whl
+    pip3 install --no-index --find-links=./python-packages/kunpeng/python3.6/ fabric3
   elif [ $python3_ver == '37' ]; then
-    pip3 install ./python-packages/kunpeng/python3.7/*.whl
+    pip3 install --no-index --find-links=./python-packages/kunpeng/python3.7/ fabric3
   fi
 
   if [ $? != 0 ]; then

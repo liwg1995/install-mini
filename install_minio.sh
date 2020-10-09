@@ -32,60 +32,13 @@ if [ $? != 0 ]; then
     echo "python3 os lib install failed!"
     exit 1
   fi
-
-  if [ ! -d "/usr/local/python3" ]; then
-      mkdir /usr/local/python3
-  fi
-
-  tar -zxvf ./lib/python3/Python-3.7.2.tgz -C /tmp && cd /tmp/Python-3.7.2/ || exit 1
-  echo "*** Install Python3 ***"
-  ./configure --prefix=/usr/local/python3  --with-ssl
-#  ./configure --enable-optimizations
-  if [ $? != 0 ]; then
-    echo "configure failed! Please check your os env"
-    exit 1
-  fi
-  echo "Please wait a moment..."
-  make
-  if [ $? != 0 ]; then
-    echo "make failed! Please check your os env"
-    exit 1
-  fi
-  make install
-  if [ $? != 0 ]; then
-    echo "make install failed! Please check your os env"
-    exit 1
-  fi
+  tar -zxvf ./python-packages/kunpeng/python3.7/python3.tgz -C /usr/local/
   ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3
   ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3
   python_version=$(python3 --version)
   echo "Install python3 and pip3 successful! Then version is: $python_version"
-  cd - || exit 1
 fi
 
-ping -c 1 www.baidu.com 1>/dev/null 2>&1
-if [ $? == 0 ]; then
-  echo "Operating system networking detected! Install fabric3 from networking"
-  which pip3 >/dev/null 2>&1
-  if [ $? != 0 ]; then
-    yum install python3-pip -y
-  fi
-  pip3 install fabric3 -i https://pypi.douban.com/simple
-else
-  echo "The operating system is not networked! Install fabric3 from local"
-  python3_ver=$(python3 --version | awk -F ' ' '{print $2}' | awk -F '.' '{print $1$2}')
-  # 还是有些问题，暂时只支持线上安装
-  if [ $python3_ver == '36' ]; then
-    pip3 install --no-index --find-links=./python-packages/kunpeng/python3.6/ fabric3
-  elif [ $python3_ver == '37' ]; then
-    pip3 install --no-index --find-links=./python-packages/kunpeng/python3.7/ fabric3
-  fi
-
-  if [ $? != 0 ]; then
-    echo "Install fabric3 failed! Please check your os env."
-    exit 1
-  fi
-fi
 which fab >/dev/null 2>&1
 if [ $? != 0 ]; then
   if [ -f '/usr/local/python3/bin/fab' ]; then

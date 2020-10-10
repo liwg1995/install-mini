@@ -1,4 +1,19 @@
 #!/usr/bin/env bash
+
+echo
+echo "*********************************************************************************************************************************"
+echo
+cat << EOF
+## 注意：
+  1. 需要修改deploy_minio中的setting.py中的机器的信息
+  2. 需要修改minio-server中的etc/default文件中的信息以及/etc/hosts文件的信息
+  3. 需要修改nginx-lvs中的minio.conf的IP地址信息
+  4. 每个节点需要挂载的盘，自行挂载，与minio-server中的etc/default中的配置项相对应即可
+  5. 上述修改完毕没有问题，直接运行 bash install_minio.sh
+EOF
+echo "*********************************************************************************************************************************"
+echo
+
 # check os is or not linux
 echo "******* Check os *******"
 os_name=$(uname)

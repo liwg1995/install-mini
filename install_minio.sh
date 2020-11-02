@@ -33,12 +33,6 @@ while true; do
       exit 1
     fi
 
-    kunpeng=$(uname -a | awk -F ' ' '{print $2}')
-    if [ $kunpeng != 'kunpeng' ]; then
-      echo "cpu is not kunpeng!This script just support huawei kunpeng"
-      exit 1
-    fi
-
     echo "check os passed"
 
     # install fabric3

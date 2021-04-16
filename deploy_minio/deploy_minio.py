@@ -20,7 +20,7 @@ def warning():
     if system_name != "Linux":
         abort(red("Only support Linux"))
     else:
-        print(green("system is: "+ system_name))
+        print(green("system is: " + system_name))
     if machine != "aarch64":
         abort(red("Only support huawei kunpeng arrch64"))
     else:

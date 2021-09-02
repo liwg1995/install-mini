@@ -41,7 +41,7 @@ def off_firewalld():
 
 
 @roles('distribute_servers')
-def deoloy_minio():
+def deploy_minio():
     print(yellow("Add MinIO binary file to /usr/local/bin/minio"))
     with lcd('../minio-server/'):
         put('minio', minio_binary_file_source + 'minio')
@@ -68,7 +68,7 @@ def set_hosts():
 
 
 @roles('distribute_servers')
-def set_systemcd_file():
+def set_systemd_file():
     print(yellow('Add MinIO systemd file to /usr/lib/systemd/system/minio.service'))
     with lcd('../minio-server/'):
         put('minio.service', minio_systemd_conf_source + 'minio.service')
@@ -114,9 +114,9 @@ def install_nginx():
 def go():
     execute(warning)
     execute(off_firewalld)
-    execute(deoloy_minio)
+    execute(deploy_minio)
     execute(minio_conf)
     execute(set_hosts)
-    execute(set_systemcd_file)
+    execute(set_systemd_file)
     execute(deploy_minio_client)
     execute(install_nginx)
